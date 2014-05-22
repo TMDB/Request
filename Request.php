@@ -28,6 +28,8 @@ SOFTWARE.
 namespace milankragujevic;
 Class Request {
     public static function get($url, $options = array()) {
+		$version = curl_version();
+		$version = $version['version'];
         $ch = curl_init();
         curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt ($ch, CURLOPT_URL, $url);
@@ -39,7 +41,7 @@ Class Request {
         if(!in_array('noredirect', $options)) {
             curl_setopt ($ch, CURLOPT_FOLLOWLOCATION, 1);
         }
-        $user_agent  = 'Mozilla/5.0 (compatible; cURL/'.curl_version().'; Request/1.1; Bot)';
+        $user_agent  = 'Mozilla/5.0 (compatible; cURL/'.$version.'; Request/1.1; Bot)';
         if(isset($options['useragent'])) {
             $user_agent = $options['useragent'];
         }
@@ -77,6 +79,8 @@ Class Request {
     }
     
     public static function post($url, $options = array(), $data = array()) {
+		$version = curl_version();
+		$version = $version['version'];
         $ch = curl_init();
         curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt ($ch, CURLOPT_URL, $url);
@@ -89,7 +93,7 @@ Class Request {
             curl_setopt ($ch, CURLOPT_FOLLOWLOCATION, 1);
         }
         
-        $user_agent  = 'Mozilla/5.0 (compatible; cURL/'.curl_version().'; Request/1.1; Bot)';
+        $user_agent  = 'Mozilla/5.0 (compatible; cURL/'.$version.'; Request/1.1; Bot)';
         if(isset($options['useragent'])) {
             $user_agent = $options['useragent'];
         }
