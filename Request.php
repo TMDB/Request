@@ -39,7 +39,7 @@ Class Request {
         if(!in_array('noredirect', $options)) {
             curl_setopt ($ch, CURLOPT_FOLLOWLOCATION, 1);
         }
-        $user_agent  = 'Opera/9.80 (Android; Opera Mini/7.5.33361/31.1350; U; en) Presto/2.8.119 Version/11.10';
+        $user_agent  = 'Mozilla/5.0 (compatible; cURL/'.curl_version().'; Request/1.1; Bot)';
         if(isset($options['useragent'])) {
             $user_agent = $options['useragent'];
         }
@@ -58,7 +58,7 @@ Class Request {
         }
         if(isset($options['cookie'])) {
             if(!file_exists($options['cookie'])) {
-                throw new Exception("The cookie file (" . $options['cookie'] . ") doesn't exist!");   
+                throw new \Exception("The cookie file (" . $options['cookie'] . ") doesn't exist!");   
             }
             curl_setopt ($ch, CURLOPT_COOKIEFILE, $options['cookie']);   
             curl_setopt ($ch, CURLOPT_COOKIEJAR, $options['cookie']);   
@@ -70,7 +70,7 @@ Class Request {
 
         $content = curl_exec($ch);
         if($content === false) {
-            throw new Exception(curl_error($ch));   
+            throw new \Exception(curl_error($ch));   
         }
         curl_close($ch);
         return $content;
@@ -89,7 +89,7 @@ Class Request {
             curl_setopt ($ch, CURLOPT_FOLLOWLOCATION, 1);
         }
         
-        $user_agent  = 'Opera/9.80 (Android; Opera Mini/7.5.33361/31.1350; U; en) Presto/2.8.119 Version/11.10';
+        $user_agent  = 'Mozilla/5.0 (compatible; cURL/'.curl_version().'; Request/1.1; Bot)';
         if(isset($options['useragent'])) {
             $user_agent = $options['useragent'];
         }
@@ -108,7 +108,7 @@ Class Request {
         }
         if(isset($options['cookie'])) {
             if(!file_exists($options['cookie'])) {
-                throw new Exception("The cookie file (" . $options['cookie'] . ") doesn't exist!");   
+                throw new \Exception("The cookie file (" . $options['cookie'] . ") doesn't exist!");   
             }
             curl_setopt ($ch, CURLOPT_COOKIEFILE, $options['cookie']);   
             curl_setopt ($ch, CURLOPT_COOKIEJAR, $options['cookie']);   
@@ -122,7 +122,7 @@ Class Request {
 
         $content = curl_exec($ch);
         if($content === false) {
-            throw new Exception(curl_error($ch));   
+            throw new \Exception(curl_error($ch));   
         }
         curl_close($ch);
         return $content;
