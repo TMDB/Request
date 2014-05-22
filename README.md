@@ -15,6 +15,11 @@ You can set the namespace using the Use command, so you don't have to prefix you
 	use milankragujevic\Request;
 	echo Request::get('http://google.com/');
 
+##### Sending POST requests
+It's really simple to send a POST request. Just put the Data as the third parameter (an array of post fields)
+
+	Request::post('http://google.com/', ['cookie' => '/tmp/cookies.txt'], ['MyField' => 'MyValue', 'AnotherField' => 'OMG! YOU CAN DO EVERYTHING!']);
+	
 #### Options
 
  * timeout - Timeout time in seconds (integer)
