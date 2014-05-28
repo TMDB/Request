@@ -30,6 +30,7 @@ It's really simple to send a POST request. Just put the Data as the third parame
  * nobody - Perform a HEAD request (recieve on the response headers, not the body itself)
  * cookie - Set the cookie jar location (NOTE: The file must exist or else Request will throw an Exception)
  * referer - Set the Referer header. (NOTE: It's not referrer, the spelling mistake is intentional)
+ * proxyip - Proxy IP address. Use it to try and spoof the request's origin IP. 
  
 ### Handling Errors
 To handle errors, simply catch any Exceptions thrown by Request. It will not quit on error, but instead it'll throw an Exception.
