@@ -50,6 +50,10 @@ Class Request {
         if(!in_array('nofail', $options)) {
             curl_setopt ($ch, CURLOPT_FAILONERROR, 1);
         }
+		
+		if(isset($options['proxyip'])) {
+			curl_setopt ($ch, CURLOPT_HTTPHEADER, array("REMOTE_ADDR: " . $options['proxyip'], "HTTP_X_FORWARDED_FOR: " . $options['proxyip']));
+        }
 
         if(in_array('header', $options)) { 
             curl_setopt ($ch, CURLOPT_HEADER, 1); 
@@ -101,6 +105,10 @@ Class Request {
         
         if(!in_array('nofail', $options)) {
             curl_setopt ($ch, CURLOPT_FAILONERROR, 1);
+        }
+		
+		if(isset($options['proxyip'])) {
+			curl_setopt ($ch, CURLOPT_HTTPHEADER, array("REMOTE_ADDR: " . $options['proxyip'], "HTTP_X_FORWARDED_FOR: " . $options['proxyip']));
         }
         
         if(in_array('header', $options)) { 
